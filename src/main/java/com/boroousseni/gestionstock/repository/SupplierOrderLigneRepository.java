@@ -1,5 +1,9 @@
 package com.boroousseni.gestionstock.repository;
 
-public interface SupplierOrderLigneRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.boroousseni.gestionstock.models.SupplierOrderLigne;
+
+public interface SupplierOrderLigneRepository  extends JpaRepository<SupplierOrderLigne, Integer> {
 
 }

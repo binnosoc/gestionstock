@@ -9,6 +9,6 @@ import com.boroousseni.gestionstock.models.Category;
 
 
 public interface CategoryRepository extends JpaRepository<Category, Integer>	 {
-	Optional<Category> findByCategoryName(String name);
+	Optional<Category> findCategoryByName(String name);
 	
 }

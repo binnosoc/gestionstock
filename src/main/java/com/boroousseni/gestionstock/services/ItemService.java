@@ -17,13 +17,13 @@ public interface ItemService {
 
 	  List<ItemDto> findAll();
 
-	  List<SaleLigneDto> findSaleLigneHistory(Integer itemID);
-
-	  List<CustomerOrderLigneDto> findCustomerOrderLigneHistory(Integer itemID);
-
-	  List<SupplierOrderLigneDto> findSupplierOrderLigneHistoryr(Integer itemID);
-
-	  List<ItemDto> findAllItemByCategoryId(Integer categoryID);
+//	  List<SaleLigneDto> findSaleHistory(Integer itemID);
+//
+//	  List<CustomerOrderLigneDto> findCustomerOrderLigneHistory(Integer itemID);
+//
+//	  List<SupplierOrderLigneDto> findSupplierOrderLigneHistory(Integer itemID);
+//
+//	  List<ItemDto> findAllItemByCategoryId(Integer categoryID);
 
 	  void delete(Integer itemID);
 

@@ -1,5 +1,9 @@
 package com.boroousseni.gestionstock.repository;
 
-public interface SupplierRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.boroousseni.gestionstock.models.Supplier;
+
+public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
 
 }

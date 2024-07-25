@@ -41,6 +41,9 @@ public class Company extends AbstractEntity {
 	@Column(name = "phone")
 	private String phone;
 	
+	@Column(name = "code")
+	private String code;
+	
 	@Column(name = "email")
 	private String email;
 	

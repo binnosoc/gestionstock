@@ -16,7 +16,7 @@ public interface CustomerOrderServcie {
 
 	  CustomerOrderDto updateCustomer(Integer orderID, Integer idClient);
 
-	  CustomerOrderDto updateItem(Integer orderID, Integer orderLigneID, Integer newItemID);
+	  CustomerOrderDto updateItem(Integer orderID, Integer orderLigneID, Integer ItemID);
 
 	  // Delete article ==> delete LigneCommandeClient
 	  CustomerOrderDto deleteItem(Integer orderID, Integer orderLigneID);
@@ -27,7 +27,7 @@ public interface CustomerOrderServcie {
 
 	  List<CustomerOrderDto> findAll();
 
-	  List<CustomerOrderLigneDto> findAllLignesCommandesClientByCommandeClientId(Integer orderID);
+	  List<CustomerOrderLigneDto> findAllCustomerOrderLigneByCustomerOrderId(Integer orderID);
 
 	  void delete(Integer id);
 

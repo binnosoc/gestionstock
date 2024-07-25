@@ -61,4 +61,7 @@ public class SupplierOrderDto {
 			return supplierOrder;
 			
 		}	
+		public boolean isDeliveredOrder() {
+			return OrderStatus.LIVREE.equals(this.status);
+		}
 }

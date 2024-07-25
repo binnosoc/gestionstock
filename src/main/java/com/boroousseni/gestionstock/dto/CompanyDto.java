@@ -25,6 +25,8 @@ public class CompanyDto {
 		
 	private String phone;
 	
+	private String code;
+	
 	private String email;
 	
 	private String picture;
@@ -58,6 +60,7 @@ public class CompanyDto {
 				.companyID(company.getCompanyID())
 				.name(company.getName())
 				.phone(company.getPhone())
+				.code(company.getCode())
 				.email(company.getEmail())
 				.picture(company.getPicture())
 				.address(AddressDto.fromEntity(company.getAddress()))
@@ -75,6 +78,7 @@ public class CompanyDto {
 		company.setCompanyID(companyDto.getCompanyID());
 		company.setName(companyDto.getName());
 		company.setPhone(companyDto.getPhone());
+		company.setCode(companyDto.getCode());
 		company.setEmail(companyDto.getEmail());
 		company.setPicture(companyDto.getPicture());
 		company.setAddress(AddressDto.toEntity(companyDto.getAddress()));

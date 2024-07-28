@@ -12,7 +12,7 @@ public interface CategoryService {
 
 	CategoryDto findByCode(String code);
 
-	List<CategoryDto> findAll();
+	List<CategoryDto> findAllByCompanyId(Integer id);
 
 	void delete(Integer id);
 }

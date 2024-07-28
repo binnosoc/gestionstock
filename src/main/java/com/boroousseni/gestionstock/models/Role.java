@@ -27,12 +27,8 @@ public class Role extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue
-	private Integer roleID;
-	
 	@Column(name = "rolename")
-	private String roleName;
+	private String name;
 
 	@ManyToOne
 	@JoinColumn(name = "userID")

@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Builder
-@Table(name = "saleOrdersLigne")
+@Table(name = "stocksMovement")
 
 public class StockMovement extends AbstractEntity {
 
@@ -31,10 +31,6 @@ public class StockMovement extends AbstractEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue
-	private Integer stockMovementId;
 
 	@Column(name = "stockMovementDate")
 	private Instant stockMovementDate;

@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 @Builder
 public class StockMovementDto {
-	private Integer stockMovementId;
+	private Integer id;
 	private ItemDto item;
 	private Instant stockMovementDate;
 	private Integer quantity;
@@ -27,7 +27,7 @@ public class StockMovementDto {
 		}
 		
 		return StockMovementDto.builder()
-				.stockMovementId(stockMovement.getStockMovementId())
+				.id(stockMovement.getId())
 				.item(ItemDto.fromEntity(stockMovement.getItem()))
 				.stockMovementDate(stockMovement.getStockMovementDate())
 				.quantity(stockMovement.getQuantity())
@@ -43,7 +43,7 @@ public class StockMovementDto {
 		}
 		
 		StockMovement stockMovement = new StockMovement();
-		stockMovement.setStockMovementId(stockMovementDto.getStockMovementId());		
+		stockMovement.setId(stockMovementDto.getId());		
 		stockMovement.setItem(ItemDto.toEntity(stockMovementDto.getItem()));
 		stockMovement.setStockMovementDate(stockMovementDto.getStockMovementDate());
 		stockMovement.setQuantity(stockMovementDto.getQuantity());

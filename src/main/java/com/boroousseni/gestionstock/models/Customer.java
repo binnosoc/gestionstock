@@ -33,11 +33,6 @@ public class Customer extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-
-	@Id
-	@GeneratedValue
-	private Integer customerID;
-	
 	
 	@Embedded
 	private BaseInfo baseInfo;

@@ -27,10 +27,6 @@ public class Category extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id	
-	@GeneratedValue
-	private Integer categoryID;
-
 	@Column(name = "name")
 	private String name;
 

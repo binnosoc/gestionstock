@@ -21,7 +21,7 @@ public class ItemValidator {
 			return errors;
 		}
 
-		if (StringUtils.isEmpty(itemDto.getItemCode())) {
+		if (StringUtils.isEmpty(itemDto.getCode())) {
 			errors.add("Veuillez renseigner le code de l'article'");
 		}
 

@@ -1,6 +1,8 @@
 package com.boroousseni.gestionstock.models;
 
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -38,12 +40,6 @@ public class User extends AbstractEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-
-	@Id
-	@GeneratedValue
-	private Integer userID;
-	
 	
 	@Embedded
 	private BaseInfo baseInfo;
@@ -52,7 +48,7 @@ public class User extends AbstractEntity {
 	private String password;
 
 	@Column(name="roles")
-	private Role role;
+	private List<Role> role;
 	
 	@ManyToOne
 	@JoinColumn(name = "companyID")

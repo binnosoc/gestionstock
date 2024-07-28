@@ -9,6 +9,11 @@ import com.boroousseni.gestionstock.models.Company;
 
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
 	
-Optional<Company> findCompanyByName(String name);
+Optional<Company> findById(Integer id);
+Optional<Company> findByName(String name);
+Optional<Company> findByCode(String name);
+Optional<Company> findByPhone(String name);
+Optional<Company> findByEmail(String name);
+
 
 }

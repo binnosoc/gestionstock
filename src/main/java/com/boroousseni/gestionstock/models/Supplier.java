@@ -35,11 +35,6 @@ public class Supplier extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-
-	@Id
-	@GeneratedValue
-	private Integer supplierID;
-	
 	
 	@Embedded
 	private BaseInfo baseInfo;

@@ -12,7 +12,7 @@ import lombok.Data;
 @Builder
 public class CustomerDto {
 
-	private Integer customerID;
+	private Integer id;
 
 	private BaseInfoDto baseInfo;
 
@@ -25,7 +25,7 @@ public class CustomerDto {
 		if (customer == null) {
 			return null;
 		}
-		return CustomerDto.builder().customerID(customer.getCustomerID())
+		return CustomerDto.builder().id(customer.getId())
 				.baseInfo(BaseInfoDto.fromEntity(customer.getBaseInfo()))
 				.company(CompanyDto.fromEntity(customer.getCompany())).build();
 	}
@@ -38,7 +38,7 @@ public class CustomerDto {
 
 		Customer customer = new Customer();
 
-		customer.setCustomerID(customerDto.getCustomerID());
+		customer.setId(customerDto.getId());
 		customer.setBaseInfo(BaseInfoDto.toEntity(customerDto.getBaseInfo()));
 		customer.setCompany(CompanyDto.toEntity(customerDto.getCompany()));
 

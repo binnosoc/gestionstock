@@ -70,16 +70,16 @@ public class SupplierOrderServiceImpl implements SupplierOrderServcice {
 					errors);
 		}
 
-		if (dto.getSupplierOrderID() != null && dto.isDeliveredOrder()) {
+		if (dto.getId() != null && dto.isDeliveredOrder()) {
 			throw new InvalidOperationException("Impossible de modifier la order lorsqu'elle est livree",
 					ErrorCode.SUPPLIER_ORDER_NOT_EDITABLE);
 		}
 
-		Optional<Supplier> supplier = supplierRepository.findById(dto.getSupplier().getSupplierID());
+		Optional<Supplier> supplier = supplierRepository.findById(dto.getSupplier().getId());
 		if (supplier.isEmpty()) {
-			log.warn("Supplier with ID {} was not found in the DB", dto.getSupplier().getSupplierID());
+			log.warn("Supplier with ID {} was not found in the DB", dto.getSupplier().getId());
 			throw new EntityNotFoundException(
-					"Aucun supplier avec l'ID" + dto.getSupplier().getSupplierID() + " n'a ete trouve dans la BDD",
+					"Aucun supplier avec l'ID" + dto.getSupplier().getId() + " n'a ete trouve dans la BDD",
 					ErrorCode.SUPPLIER_NOT_FOUND);
 		}
 
@@ -88,9 +88,9 @@ public class SupplierOrderServiceImpl implements SupplierOrderServcice {
 		if (dto.getSupplierOrdersLigne() != null) {
 			dto.getSupplierOrdersLigne().forEach(ligCmdFrs -> {
 				if (ligCmdFrs.getItem() != null) {
-					Optional<Item> item = itemRepository.findById(ligCmdFrs.getItem().getItemId());
+					Optional<Item> item = itemRepository.findById(ligCmdFrs.getItem().getId());
 					if (item.isEmpty()) {
-						itemErrors.add("article avec l'ID " + ligCmdFrs.getItem().getItemId() + " n'existe pas");
+						itemErrors.add("article avec l'ID " + ligCmdFrs.getItem().getId() + " n'existe pas");
 					}
 				} else {
 					itemErrors.add("Impossible d'enregister une order avec un aticle NULL");
@@ -214,17 +214,17 @@ public class SupplierOrderServiceImpl implements SupplierOrderServcice {
 						ErrorCode.SUPPLIER_ORDER_NOT_FOUND));
 	}
 
-	@Override
-	public SupplierOrderDto findByCode(String code) {
-		// TODO Auto-generated method stub
-		if (StringUtils.isEmpty(code)) {
-			log.error("Order supplier CODE is NULL");
-			return null;
-		}
-		return supplierOrderRepository.findSupplierOrderByCode(code).map(SupplierOrderDto::fromEntity).orElseThrow(
-				() -> new EntityNotFoundException("Aucune order supplier n'a ete trouve avec le CODE " + code,
-						ErrorCode.SUPPLIER_ORDER_NOT_FOUND));
-	}
+//	@Override
+//	public SupplierOrderDto findByCode(String code) {
+//		// TODO Auto-generated method stub
+//		if (StringUtils.isEmpty(code)) {
+//			log.error("Order supplier CODE is NULL");
+//			return null;
+//		}
+//		return supplierOrderRepository.findByCode(code).map(SupplierOrderDto::fromEntity).orElseThrow(
+//				() -> new EntityNotFoundException("Aucune order supplier n'a ete trouve avec le CODE " + code,
+//						ErrorCode.SUPPLIER_ORDER_NOT_FOUND));
+//	}
 
 	@Override
 	public List<SupplierOrderDto> findAll() {
@@ -307,7 +307,7 @@ public class SupplierOrderServiceImpl implements SupplierOrderServcice {
 	}
 
 	private void doEntree(SupplierOrderLigne lig) {
-		StockMovementDto stockMovementDto = StockMovementDto.builder().stockMovementId(lig.getSupplierOrderLigneID())
+		StockMovementDto stockMovementDto = StockMovementDto.builder().id(lig.getId())
 				.item(ItemDto.fromEntity(lig.getItem())).stockMovementDate(Instant.now())
 				.typeOfStock(TypeOfStock.ENTREE).stockSource(StockSource.COMMANDE_FOURNISSEUR).build();
 		stockMovementService.entreeStock(stockMovementDto);

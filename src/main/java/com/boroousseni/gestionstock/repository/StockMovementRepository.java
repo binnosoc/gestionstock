@@ -11,8 +11,9 @@ import com.boroousseni.gestionstock.models.StockMovement;
 
 public interface StockMovementRepository extends JpaRepository<StockMovement, Integer> {
 	
-	@Query("select sum(m.quantity) from StockMovement m where m.item.item_id = :itemID")
+	@Query("select sum(m.quantity) from StockMovement m where m.item.id = :itemID")
 	BigDecimal stockReelItem(@Param("itemID") Integer itemID);
 
-	List<StockMovement> findAllByItemID(Integer itemID);
+	List<StockMovement> findAllByItemId(Integer id);
+	List<StockMovement> findAllByCompanyId(Integer id);
 }

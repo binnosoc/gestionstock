@@ -8,8 +8,9 @@ import java.util.Optional;
 
 
 public interface ItemRepository extends JpaRepository<Item, Integer> {
-	Optional<Item> findItemByItemCode(String itemCode);
-	Optional<Item> findItemByItemId(Integer itemID);
-	Optional<Item> findItemByName(String name);
-	List<Item> findAllByCategoryId(Integer categoryID);
+	Optional<Item> findByCode(String itemCode);
+	Optional<Item> findById(Integer itemID);
+	Optional<Item> findByName(String name);
+	List<Item> findAllByCategoryId(Integer id);
+	List<Item> findAllByCompanyId(Integer id);
 }

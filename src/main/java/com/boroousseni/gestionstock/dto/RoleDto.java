@@ -1,6 +1,7 @@
 package com.boroousseni.gestionstock.dto;
 
 import com.boroousseni.gestionstock.models.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 import lombok.Data;
@@ -8,10 +9,11 @@ import lombok.Data;
 @Data
 @Builder
 public class RoleDto {
-	private Integer roleID;
+	private Integer id;
 	 
-	private String roleName;
+	private String name;
  
+	@JsonIgnore
 	private UserDto user;
 
 	public static Role toEntity(RoleDto roleDto) {
@@ -20,9 +22,8 @@ public class RoleDto {
 			return null;
 		}
 		Role role = new Role();
-		role.setRoleID(roleDto.getRoleID());
-		role.setRoleName(roleDto.getRoleName());
-		role.setUser(UserDto.toEntity(roleDto.getUser()));
+		role.setId(roleDto.getId());
+		role.setName(roleDto.getName());		
 		return role;
 	}
 
@@ -33,8 +34,8 @@ public class RoleDto {
 		}
 		
 		return RoleDto.builder()
-				.roleID(role.getRoleID())
-				.roleName(role.getRoleName())
+				.id(role.getId())
+				.name(role.getName())
 				.user(UserDto.fromEntity(role.getUser()))
 				.build()
 				;

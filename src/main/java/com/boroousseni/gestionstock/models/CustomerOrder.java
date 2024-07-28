@@ -34,11 +34,6 @@ public class CustomerOrder extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue
-	private Integer customerOrderID;
-	
-	
 	@Column(name="orderDate")
 	private Instant orderDate;
 	

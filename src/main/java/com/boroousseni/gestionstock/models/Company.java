@@ -30,10 +30,6 @@ public class Company extends AbstractEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue
-	private Integer companyID;
 	
 	@Column(name = "name")
 	private String name;

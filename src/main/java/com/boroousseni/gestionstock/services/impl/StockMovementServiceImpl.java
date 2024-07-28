@@ -45,7 +45,7 @@ public class StockMovementServiceImpl implements StockMovementService {
 	@Override
 	public List<StockMovementDto> stockMovementItem(Integer itemID) {
 		// TODO Auto-generated method stub
-		return stockMovementRepository.findAllByItemID(itemID).stream().map(StockMovementDto::fromEntity)
+		return stockMovementRepository.findAllByItemId(itemID).stream().map(StockMovementDto::fromEntity)
 				.collect(Collectors.toList());
 	}
 

@@ -12,7 +12,7 @@ import lombok.Data;
 @Builder
 public class SaleDto {
 	 
-		private Integer saleID;
+		private Integer id;
 	 
 		private String code;
 	 
@@ -34,7 +34,7 @@ public class SaleDto {
 			
 			
 			return SaleDto.builder()
-					.saleID(sale.getSaleID())
+					.id(sale.getId())
 					.code(sale.getCode())
 					.description(sale.getDescription())
 					.saleDate(sale.getSaleDate())
@@ -53,7 +53,7 @@ public class SaleDto {
 			}
 			Sale sale= new Sale();
 			
-			sale.setSaleID(saleDto.getSaleID());
+			sale.setId(saleDto.getId());
 			sale.setCode(saleDto.getCode());
 			sale.setDescription(saleDto.getDescription());
 			sale.setSaleDate(saleDto.getSaleDate());

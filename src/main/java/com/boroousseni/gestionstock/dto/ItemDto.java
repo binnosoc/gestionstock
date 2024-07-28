@@ -12,9 +12,9 @@ import lombok.Data;
 @Builder
 public class ItemDto {
 	
-	private Integer itemId;
+	private Integer id;
 
-	private String itemCode;
+	private String code;
 
 	private String name;
 
@@ -43,8 +43,8 @@ public class ItemDto {
 			
 		
 		return ItemDto.builder()
-				.itemId(item.getItemId())
-				.itemCode(item.getItemCode())
+				.id(item.getId())
+				.code(item.getCode())
 				.name(item.getName())
 				.description(item.getDescription())
 				.unitPrice(item.getUnitPrice())
@@ -61,8 +61,8 @@ public class ItemDto {
 		
 		Item item = new Item();
 		
-		item.setItemId(itemDto.getItemId());
-		item.setItemCode(itemDto.getItemCode());
+		item.setId(itemDto.getId());
+		item.setCode(itemDto.getCode());
 		item.setName(itemDto.getName());
 		item.setDescription(itemDto.getDescription());
 		item.setUnitPrice(itemDto.getUnitPrice());

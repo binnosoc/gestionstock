@@ -14,7 +14,7 @@ import lombok.Data;
 @Builder
 public class CustomerOrderDto {
 
-	private Integer customerOrderID;
+	private Integer id;
 
 	private Instant orderDate;
 
@@ -35,7 +35,7 @@ public class CustomerOrderDto {
 		// TODO Auto-generated method stub
 		if (customerOrder == null)
 			return null;
-		return CustomerOrderDto.builder().customerOrderID(customerOrder.getCustomerOrderID())
+		return CustomerOrderDto.builder().id(customerOrder.getId())
 				.orderDate(customerOrder.getOrderDate()).totalAmount(customerOrder.getTotalAmount())
 				.quantity(customerOrder.getQuantity()).status(customerOrder.getStatus())
 				.customer(CustomerDto.fromEntity(customerOrder.getCustomer()))
@@ -50,7 +50,7 @@ public class CustomerOrderDto {
 
 		CustomerOrder customerOrder = new CustomerOrder();
 
-		customerOrder.setCustomerOrderID(customerOrderDto.getCustomerOrderID());
+		customerOrder.setId(customerOrderDto.getId());
 		customerOrder.setOrderDate(customerOrderDto.getOrderDate());
 		customerOrder.setTotalAmount(customerOrderDto.getTotalAmount());
 		customerOrder.setQuantity(customerOrderDto.getQuantity());

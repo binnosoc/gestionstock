@@ -39,7 +39,8 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	private UserDto fromCompany(CompanyDto dto) {
-		return UserDto.builder().password(generateRandomPassword()).company(dto).build();
+//		return UserDto.builder().password(generateRandomPassword()).company(dto).build();
+		return null;
 	}
 
 	private String generateRandomPassword() {
@@ -49,21 +50,22 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public CompanyDto save(CompanyDto dto) {
 		// TODO Auto-generated method stub
-		List<String> errors = CompanyValidator.validate(dto);
-		if (!errors.isEmpty()) {
-			log.error("Company is not valid {}", dto);
-			throw new InvalidEntityException("L'company n'est pas valide", ErrorCode.COMPANY_NOT_VALID, errors);
-		}
+//		List<String> errors = CompanyValidator.validate(dto);
+//		if (!errors.isEmpty()) {
+//			log.error("Company is not valid {}", dto);
+//			throw new InvalidEntityException("L'company n'est pas valide", ErrorCode.COMPANY_NOT_VALID, errors);
+//		}
 		CompanyDto savedCompany = CompanyDto.fromEntity(companyRepository.save(CompanyDto.toEntity(dto)));
-
-		UserDto user = fromCompany(savedCompany);
-
-		UserDto savedUser = userService.save(user);
-
-		RoleDto roleDto = RoleDto.builder().roleName("ADMIN").user(savedUser).build();
-
-		roleRepository.save(RoleDto.toEntity(roleDto));
-
+//
+//		UserDto user = fromCompany(savedCompany);
+//
+//		UserDto savedUser = userService.save(user);
+//
+//		RoleDto roleDto = RoleDto.builder().roleName("ADMIN").user(savedUser).build();
+//
+//		roleRepository.save(RoleDto.toEntity(roleDto));
+//
+//		return savedCompany;
 		return savedCompany;
 	}
 

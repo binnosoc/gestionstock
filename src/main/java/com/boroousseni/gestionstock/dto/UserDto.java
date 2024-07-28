@@ -1,5 +1,8 @@
 package com.boroousseni.gestionstock.dto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.boroousseni.gestionstock.models.User;
 
 import lombok.Builder;
@@ -9,13 +12,13 @@ import lombok.Data;
 @Builder
 public class UserDto {
 	 
-		private Integer userID;
+		private Integer id;
 	 
 		private BaseInfoDto baseInfo;
 	 
 		private String password;
 	 
-		private RoleDto role;
+		private List<RoleDto> role;
 	 
 		private CompanyDto company;
 		
@@ -25,10 +28,15 @@ public class UserDto {
 			}
 			
 			return UserDto.builder()
-					.userID(user.getUserID())
+					.id(user.getId())
 					.baseInfo(BaseInfoDto.fromEntity(user.getBaseInfo()))
 					.password(user.getPassword())
-					.role(RoleDto.fromEntity(user.getRole()))
+					.role(
+				            user.getRole() != null ?
+				                user.getRole().stream()
+				                    .map(RoleDto::fromEntity)
+				                    .collect(Collectors.toList()) : null
+				        )
 					.company(CompanyDto.fromEntity(user.getCompany()))
 					.build()
 					;
@@ -40,10 +48,9 @@ public class UserDto {
 			}
 			
 			User user = new User();
-			user.setUserID(userDto.getUserID());
+			user.setId(userDto.getId());
 			user.setBaseInfo(BaseInfoDto.toEntity(userDto.getBaseInfo()));
-			user.setPassword(userDto.getPassword());
-			user.setRole(RoleDto.toEntity(userDto.getRole()));
+			user.setPassword(userDto.getPassword());			
 			user.setCompany(CompanyDto.toEntity(userDto.getCompany()));
 			
 			return user;

@@ -12,7 +12,7 @@ import lombok.Data;
 @Builder
 public class SupplierDto {
 
-	private Integer supplierID;
+	private Integer id;
 	 
 	private BaseInfoDto baseInfo;
  
@@ -28,7 +28,7 @@ public class SupplierDto {
 			return null;
 		}
 		return SupplierDto.builder()
-				.supplierID(supplier.getSupplierID())
+				.id(supplier.getId())
 				.baseInfo(BaseInfoDto.fromEntity(supplier.getBaseInfo()))
 				.company(CompanyDto.fromEntity(supplier.getCompany()))
 				.build()
@@ -43,7 +43,7 @@ public class SupplierDto {
 		}
 		Supplier supplier = new Supplier();
 		
-		supplier.setSupplierID(supplierDto.getSupplierID());
+		supplier.setId(supplierDto.getId());
 		supplier.setBaseInfo(BaseInfoDto.toEntity(supplierDto.getBaseInfo()));
 		supplier.setCompany(CompanyDto.toEntity(supplierDto.getCompany()));
 		

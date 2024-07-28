@@ -22,8 +22,7 @@ public interface SupplierOrderServcice {
 	  SupplierOrderDto deleteItem(Integer orderID, Integer orderLigneID);
 
 	  SupplierOrderDto findById(Integer id);
-
-	  SupplierOrderDto findByCode(String code);
+	  
 
 	  List<SupplierOrderDto> findAll();
 

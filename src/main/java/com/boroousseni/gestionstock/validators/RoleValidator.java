@@ -17,7 +17,7 @@ public class RoleValidator {
 			return errors;
 		}
 
-		if (StringUtils.isEmpty(roleDto.getRoleName())) {
+		if (StringUtils.isEmpty(roleDto.getName())) {
 			errors.add("Veuillez renseigner le role'");
 		}
 

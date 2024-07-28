@@ -19,7 +19,7 @@ import lombok.Data;
 @Builder
 public class CompanyDto {
 
-	private Integer companyID;	
+	private Integer id;	
 	
 	private String name;
 		
@@ -57,7 +57,7 @@ public class CompanyDto {
 		}
 		
 		return CompanyDto.builder()
-				.companyID(company.getCompanyID())
+				.id(company.getId())
 				.name(company.getName())
 				.phone(company.getPhone())
 				.code(company.getCode())
@@ -75,7 +75,7 @@ public class CompanyDto {
 		
 		Company company=new Company();
 		
-		company.setCompanyID(companyDto.getCompanyID());
+		company.setId(companyDto.getId());
 		company.setName(companyDto.getName());
 		company.setPhone(companyDto.getPhone());
 		company.setCode(companyDto.getCode());

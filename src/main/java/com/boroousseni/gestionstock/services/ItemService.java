@@ -13,17 +13,17 @@ public interface ItemService {
 
 	  ItemDto findById(Integer itemID);
 
-	  ItemDto findByItemCode(String itemCode);
+	  ItemDto findByCode(String itemCode);
 
 	  List<ItemDto> findAll();
 
-//	  List<SaleLigneDto> findSaleHistory(Integer itemID);
-//
-//	  List<CustomerOrderLigneDto> findCustomerOrderLigneHistory(Integer itemID);
-//
-//	  List<SupplierOrderLigneDto> findSupplierOrderLigneHistory(Integer itemID);
-//
-//	  List<ItemDto> findAllItemByCategoryId(Integer categoryID);
+	  List<SaleLigneDto> findSaleHistory(Integer itemID);
+
+	  List<CustomerOrderLigneDto> findCustomerOrderLigneHistory(Integer itemID);
+
+	  List<SupplierOrderLigneDto> findSupplierOrderLigneHistory(Integer itemID);
+
+	  List<ItemDto> findAllItemByCategoryId(Integer categoryID);
 
 	  void delete(Integer itemID);
 

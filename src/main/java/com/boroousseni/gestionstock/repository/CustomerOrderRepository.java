@@ -7,12 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.boroousseni.gestionstock.dto.CustomerOrderLigneDto;
 import com.boroousseni.gestionstock.models.CustomerOrder;
+import com.boroousseni.gestionstock.models.CustomerOrderLigne;
 
-public interface CustomerOrderRepository extends JpaRepository<CustomerOrder, Integer> {
-	
-	List<CustomerOrder> findAllByCustomerId(Integer customerID);
-
-	List<CustomerOrderLigneDto> findAllCustomerOrderLigneByCustomerOrderId(Integer orderID);
-
-	Optional<CustomerOrder> findCustomerOrderById(Integer customerOrderID);
+public interface CustomerOrderRepository extends JpaRepository<CustomerOrder, Integer> {	
+	List<CustomerOrder> findAllByCustomerId(Integer customerID);	
+	List<CustomerOrder> findAllByCompanyId(Integer customerID);
+	List<CustomerOrder> findAllByStatus(String status);
+	Optional<CustomerOrder> findById(Integer customerOrderID);
 }

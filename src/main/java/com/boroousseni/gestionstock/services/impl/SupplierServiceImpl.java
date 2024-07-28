@@ -11,7 +11,7 @@ import com.boroousseni.gestionstock.exceptions.EntityNotFoundException;
 import com.boroousseni.gestionstock.exceptions.ErrorCode;
 import com.boroousseni.gestionstock.exceptions.InvalidEntityException;
 import com.boroousseni.gestionstock.exceptions.InvalidOperationException;
-import com.boroousseni.gestionstock.models.CustomerOrder;
+import com.boroousseni.gestionstock.models.SupplierOrder;
 import com.boroousseni.gestionstock.repository.SupplierOrderRepository;
 import com.boroousseni.gestionstock.repository.SupplierRepository;
 import com.boroousseni.gestionstock.services.SupplierServcice;
@@ -70,7 +70,7 @@ public class SupplierServiceImpl implements SupplierServcice {
 			log.error("Supplier ID is null");
 			return;
 		}
-		List<CustomerOrder> supplierOrder = supplierOrderRepository.findAllBySupplierId(id);
+		List<SupplierOrder> supplierOrder = supplierOrderRepository.findAllBySupplierId(id);
 		if (!supplierOrder.isEmpty()) {
 			throw new InvalidOperationException("Impossible de supprimer un fournisseur qui a deja des commandes",
 					ErrorCode.SUPPLIER_ALREADY_IN_USE);

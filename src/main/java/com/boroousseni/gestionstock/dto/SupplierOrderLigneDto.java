@@ -9,7 +9,7 @@ import lombok.Data;
 @Builder
 public class SupplierOrderLigneDto {
 	
-	private Integer supplierOrderLigneID;
+	private Integer id;
 		 
 	private SupplierOrderDto supplierOrder;
  
@@ -22,7 +22,7 @@ public class SupplierOrderLigneDto {
 		}
 		
 		return SupplierOrderLigneDto.builder()
-				.supplierOrderLigneID(supplierOrderLigne.getSupplierOrderLigneID())
+				.id(supplierOrderLigne.getId())
 				.supplierOrder(SupplierOrderDto.fromEntity(supplierOrderLigne.getSupplierOrder()))
 				.item(ItemDto.fromEntity(supplierOrderLigne.getItem()))
 				.build();
@@ -35,7 +35,7 @@ public class SupplierOrderLigneDto {
 		
 		SupplierOrderLigne supplierOrderLigne = new SupplierOrderLigne();
 		
-		supplierOrderLigne.setSupplierOrderLigneID(supplierOrderLigneDto.getSupplierOrderLigneID());
+		supplierOrderLigne.setId(supplierOrderLigneDto.getId());
 		supplierOrderLigne.setSupplierOrder(SupplierOrderDto.toEntity(supplierOrderLigneDto.getSupplierOrder()));
 		supplierOrderLigne.setItem(ItemDto.toEntity(supplierOrderLigneDto.getItem()));;
 		

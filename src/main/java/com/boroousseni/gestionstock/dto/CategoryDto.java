@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 @Builder
 public class CategoryDto {
-	private Integer categoryID;
+	private Integer id;
 
 	private String name;
 	
@@ -28,7 +28,7 @@ public class CategoryDto {
 		}
 		
 		return CategoryDto.builder()
-				.categoryID(category.getCategoryID())
+				.id(category.getId())
 				.name(category.getName())
 				.description(category.getDescription())
 				.company(CompanyDto.fromEntity(category.getCompany()))
@@ -42,7 +42,7 @@ public class CategoryDto {
 		
 		Category category = new Category();
 		
-		category.setCategoryID(categoryDto.getCategoryID());
+		category.setId(categoryDto.getId());
 		category.setName(categoryDto.getName());
 		category.setDescription(categoryDto.getDescription());
 		category.setCompany(CompanyDto.toEntity(categoryDto.getCompany()));	

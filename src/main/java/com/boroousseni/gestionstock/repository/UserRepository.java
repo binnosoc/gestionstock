@@ -1,5 +1,6 @@
 package com.boroousseni.gestionstock.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,9 +9,16 @@ import org.springframework.data.repository.query.Param;
 
 import com.boroousseni.gestionstock.models.User;
 
-public interface UserRepository  extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-	  // JPQL query
-	  @Query(value = "select u from User u where u.email = :email")
-	  Optional<User> findUserByEmail(@Param("email") String email);
+	// JPQL query
+
+	@Query(value = "select u from User u where u.baseInfo.email = :email")
+	Optional<User> findByBaseInfoEmail(String email);
+
+	Optional<User> findByPassword(String password);
+
+	Optional<User> findByBaseInfoPhone(String phone);
+
+	List<User> findAllByCompanyId(Integer id);
 }

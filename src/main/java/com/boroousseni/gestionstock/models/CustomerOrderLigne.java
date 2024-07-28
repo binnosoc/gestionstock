@@ -26,11 +26,7 @@ public class CustomerOrderLigne extends AbstractEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue
-	private Integer customerOrderLigneID;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "customerOrderID")
 	private CustomerOrder customerOrder;

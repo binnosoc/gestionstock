@@ -6,16 +6,16 @@ import com.boroousseni.gestionstock.dto.ChangePasswordDto;
 import com.boroousseni.gestionstock.dto.UserDto;
 
 public interface UserService {
-	
+
 	UserDto save(UserDto dto);
 
-	  UserDto findById(Integer id);
+	UserDto findById(Integer id);
 
-	  List<UserDto> findAll();
+	List<UserDto> findAll();
 
-	  void delete(Integer id);
+	void delete(Integer id);
 
-	  UserDto findByEmail(String email);
+	UserDto findByEmail(String email);
 
-	  UserDto changePassword(ChangePasswordDto dto);
+	UserDto changePassword(ChangePasswordDto dto);
 }

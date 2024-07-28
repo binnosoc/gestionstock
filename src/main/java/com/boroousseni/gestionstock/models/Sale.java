@@ -31,10 +31,6 @@ public class Sale extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue
-	private Integer saleID;
-
 	@Column(name="code")
 	private String code;
 	

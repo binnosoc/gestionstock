@@ -14,7 +14,7 @@ import lombok.Data;
 @Builder
 public class SupplierOrderDto {
 	 
-		private Integer supplierOrderID;
+		private Integer id;
 	 
 		private Instant orderDate;
 	 
@@ -34,7 +34,7 @@ public class SupplierOrderDto {
 				return null;
 			}
 			return SupplierOrderDto.builder()
-					.supplierOrderID(supplierOrder.getSupplierOrderID())
+					.id(supplierOrder.getId())
 					.orderDate(supplierOrder.getOrderDate())
 					.totalAmount(supplierOrder.getTotalAmount())
 					.quantity(supplierOrder.getQuantity())
@@ -51,7 +51,7 @@ public class SupplierOrderDto {
 			
 			SupplierOrder supplierOrder = new SupplierOrder();
 			
-			supplierOrder.setSupplierOrderID(supplierOrderDto.getSupplierOrderID());
+			supplierOrder.setId(supplierOrderDto.getId());
 			supplierOrder.setOrderDate(supplierOrderDto.getOrderDate());
 			supplierOrder.setTotalAmount(supplierOrderDto.getTotalAmount());
 			supplierOrder.setQuantity(supplierOrderDto.getQuantity());

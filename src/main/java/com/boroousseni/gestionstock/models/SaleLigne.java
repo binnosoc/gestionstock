@@ -27,10 +27,6 @@ public class SaleLigne extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue
-	private Integer saleLigneID;
-
 	@ManyToOne
 	@JoinColumn(name = "saleID")
 	private Sale sale;

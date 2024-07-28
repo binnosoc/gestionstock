@@ -60,39 +60,41 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public CategoryDto findByCode(String code) {
 		// TODO Auto-generated method stub
-		 if (!StringUtils.isEmpty(code)) {
-		      log.error("Category CODE is null");
-		      return null;
-		    }
-		    return categoryRepository.findCategoryByName(code)
-		        .map(CategoryDto::fromEntity)
-		        .orElseThrow(() -> new EntityNotFoundException(
-		            "Aucune category avec le CODE = " + code + " n' ete trouve dans la BDD",
-		            ErrorCode.CATEGORY_NOT_FOUND)
-		        );
+		if (!StringUtils.isEmpty(code)) {
+			log.error("Category CODE is null");
+			return null;
+		}
+		return categoryRepository.findByName(code).map(CategoryDto::fromEntity)
+				.orElseThrow(() -> new EntityNotFoundException(
+						"Aucune category avec le CODE = " + code + " n' ete trouve dans la BDD",
+						ErrorCode.CATEGORY_NOT_FOUND));
 	}
 
 	@Override
-	public List<CategoryDto> findAll() {
+	public List<CategoryDto> findAllByCompanyId(Integer id) {
 		// TODO Auto-generated method stub
-		return categoryRepository.findAll().stream()
-		        .map(CategoryDto::fromEntity)
-		        .collect(Collectors.toList());
+		if (id == null) {
+			log.error("Category ID is null");
+			return null;
+		}
+		return categoryRepository.findAllByCompanyId(id).stream().map(CategoryDto::fromEntity).collect(Collectors.toList());
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		 if (id == null) {
-		      log.error("Category ID is null");
-		      return;
-		    }
-//		    List<Item> items = ItemRepository.findAllByCategoryId(id);
-//		    if (!items.isEmpty()) {
-//		      throw new InvalidOperationException("Impossible de supprimer cette categorie qui est deja utilise",
-//		          ErrorCode.CATEGORY_ALREADY_IN_USE);
-//		    }
-		    categoryRepository.deleteById(id);
+		if (id == null) {
+			log.error("Category ID is null");
+			return;
+		}
+
+		List<Item> items = itemRepository.findAllByCategoryId(id);
+
+		if (!items.isEmpty()) {
+			throw new InvalidOperationException("Impossible de supprimer cette categorie qui est deja utilisée",
+					ErrorCode.CATEGORY_ALREADY_IN_USE);
+		}
+
+		categoryRepository.deleteById(id);
 	}
 
 }

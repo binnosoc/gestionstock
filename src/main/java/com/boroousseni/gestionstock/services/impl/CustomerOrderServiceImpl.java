@@ -69,16 +69,16 @@ public class CustomerOrderServiceImpl implements CustomerOrderServcie {
 					errors);
 		}
 
-		if (dto.getCustomerOrderID() != null && dto.isDeliveredOrder()) {
+		if (dto.getId() != null && dto.isDeliveredOrder()) {
 			throw new InvalidOperationException("Impossible de modifier la order lorsqu'elle est livree",
 					ErrorCode.CUSTOMER_ORDER_NOT_EDITABLE);
 		}
 
-		Optional<Customer> customer = customerRepository.findById(dto.getCustomer().getCustomerID());
+		Optional<Customer> customer = customerRepository.findById(dto.getCustomer().getId());
 		if (customer.isEmpty()) {
-			log.warn("Customer with ID {} was not found in the DB", dto.getCustomer().getCustomerID());
+			log.warn("Customer with ID {} was not found in the DB", dto.getCustomer().getId());
 			throw new EntityNotFoundException(
-					"Aucun customer avec l'ID" + dto.getCustomer().getCustomerID() + " n'a ete trouve dans la BDD",
+					"Aucun customer avec l'ID" + dto.getCustomer().getId() + " n'a ete trouve dans la BDD",
 					ErrorCode.CUSTOMER_NOT_FOUND);
 		}
 
@@ -87,9 +87,9 @@ public class CustomerOrderServiceImpl implements CustomerOrderServcie {
 		if (dto.getCustomerOrdersLigne() != null) {
 			dto.getCustomerOrdersLigne().forEach(ligCmdClt -> {
 				if (ligCmdClt.getItem() != null) {
-					Optional<Item> item = itemRepository.findById(ligCmdClt.getItem().getItemId());
+					Optional<Item> item = itemRepository.findById(ligCmdClt.getItem().getId());
 					if (item.isEmpty()) {
-						errorsItem.add("L'item avec l'ID " + ligCmdClt.getItem().getItemId() + " n'existe pas");
+						errorsItem.add("L'item avec l'ID " + ligCmdClt.getItem().getId() + " n'existe pas");
 					}
 				} else {
 					errorsItem.add("Impossible d'enregister une order avec un aticle NULL");
@@ -261,8 +261,8 @@ public class CustomerOrderServiceImpl implements CustomerOrderServcie {
 			log.error("Order customer ID is NULL");
 			return;
 		}
-		List<CustomerOrderLigne> CustomerOrderLigne = customerOrderLigneRepository.findAllByCustomerOrderId(id);
-		if (!CustomerOrderLigne.isEmpty()) {
+		List<CustomerOrderLigne> customerOrderLigne = customerOrderLigneRepository.findAllByCustomerOrderId(id);
+		if (!customerOrderLigne.isEmpty()) {
 			throw new InvalidOperationException("Impossible de supprimer une order customer deja utilisee",
 					ErrorCode.CUSTOMER_ORDER_ALREADY_IN_USE);
 		}

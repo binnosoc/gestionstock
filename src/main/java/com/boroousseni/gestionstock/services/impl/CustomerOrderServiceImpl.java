@@ -210,20 +210,7 @@ public class CustomerOrderServiceImpl implements CustomerOrderServcie {
 		return orderCustomer;
 	}
 
-	@Override
-	public CustomerOrderDto deleteItem(Integer orderID, Integer orderLigneID) {
-		// TODO Auto-generated method stub
-		checkOrderId(orderID);
-		checkOrderLigneId(orderLigneID);
-
-		CustomerOrderDto orderCustomer = checkOrderStatus(orderID);
-		// Just to check the CustomerOrderLigne and inform the customer in case it is
-		// absent
-		findCustomerOrderLigne(orderLigneID);
-		customerOrderLigneRepository.deleteById(orderLigneID);
-
-		return orderCustomer;
-	}
+	
 
 
 
@@ -240,18 +227,13 @@ public class CustomerOrderServiceImpl implements CustomerOrderServcie {
 	}
 
 
-	@Override
-	public List<CustomerOrderDto> findAll() {
-		// TODO Auto-generated method stub
-		return customerOrderRepository.findAll().stream().map(CustomerOrderDto::fromEntity)
-				.collect(Collectors.toList());
-	}
+	
 
 	@Override
-	public List<CustomerOrderLigneDto> findAllCustomerOrderLigneByCustomerOrderId(Integer orderID) {
+	public List<CustomerOrderDto> findAllByCustomerId(Integer orderID) {
 		// TODO Auto-generated method stub
-		return customerOrderLigneRepository.findAllByCustomerOrderId(orderID).stream()
-				.map(CustomerOrderLigneDto::fromEntity).collect(Collectors.toList());
+		return customerOrderRepository.findAllByCustomerId(orderID).stream()
+				.map(CustomerOrderDto::fromEntity).collect(Collectors.toList());
 	}
 
 	@Override
@@ -329,10 +311,6 @@ public class CustomerOrderServiceImpl implements CustomerOrderServcie {
 		stockMovementService.sortieStock(stockMovementDto);
 	}
 
-	@Override
-	public CustomerOrderDto findByCode(String code) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

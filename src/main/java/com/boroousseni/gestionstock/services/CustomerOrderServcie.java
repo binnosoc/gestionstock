@@ -18,16 +18,9 @@ public interface CustomerOrderServcie {
 
 	  CustomerOrderDto updateItem(Integer orderID, Integer orderLigneID, Integer ItemID);
 
-	  // Delete article ==> delete LigneCommandeClient
-	  CustomerOrderDto deleteItem(Integer orderID, Integer orderLigneID);
+	  CustomerOrderDto findById(Integer id);	  
 
-	  CustomerOrderDto findById(Integer id);
-
-	  CustomerOrderDto findByCode(String code);
-
-	  List<CustomerOrderDto> findAll();
-
-	  List<CustomerOrderLigneDto> findAllCustomerOrderLigneByCustomerOrderId(Integer orderID);
+	  List<CustomerOrderDto> findAllByCustomerId(Integer id);
 
 	  void delete(Integer id);
 

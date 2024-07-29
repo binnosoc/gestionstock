@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.boroousseni.gestionstock.dto.ItemDto;
 import com.boroousseni.gestionstock.dto.StockMovementDto;
@@ -34,7 +35,7 @@ import com.boroousseni.gestionstock.services.SupplierOrderServcice;
 import com.boroousseni.gestionstock.validators.ItemValidator;
 import com.boroousseni.gestionstock.validators.SupplierOrderValidator;
 
-import io.micrometer.common.util.StringUtils;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -123,7 +124,7 @@ public class SupplierOrderServiceImpl implements SupplierOrderServcice {
 	public SupplierOrderDto updateOrderStatus(Integer orderID, OrderStatus orderStatus) {
 		// TODO Auto-generated method stub
 		checkOrderId(orderID);
-		if (StringUtils.isEmpty(String.valueOf(orderStatus))) {
+		if (!StringUtils.hasLength(String.valueOf(orderStatus))) {
 			log.error("L'etat de la order supplier is NULL");
 			throw new InvalidOperationException("Impossible de modifier l'etat de la order avec un etat null",
 					ErrorCode.SUPPLIER_ORDER_NOT_EDITABLE);
@@ -217,7 +218,7 @@ public class SupplierOrderServiceImpl implements SupplierOrderServcice {
 //	@Override
 //	public SupplierOrderDto findByCode(String code) {
 //		// TODO Auto-generated method stub
-//		if (StringUtils.isEmpty(code)) {
+//		if (!StringUtils.hasLength(code)) {
 //			log.error("Order supplier CODE is NULL");
 //			return null;
 //		}

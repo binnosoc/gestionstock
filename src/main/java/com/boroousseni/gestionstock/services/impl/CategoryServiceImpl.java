@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.boroousseni.gestionstock.dto.CategoryDto;
 import com.boroousseni.gestionstock.exceptions.EntityNotFoundException;
@@ -17,7 +18,7 @@ import com.boroousseni.gestionstock.repository.ItemRepository;
 import com.boroousseni.gestionstock.services.CategoryService;
 import com.boroousseni.gestionstock.validators.CategoryValidator;
 
-import io.micrometer.common.util.StringUtils;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -60,7 +61,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public CategoryDto findByCode(String code) {
 		// TODO Auto-generated method stub
-		if (!StringUtils.isEmpty(code)) {
+		if (!StringUtils.hasLength(code)) {
 			log.error("Category CODE is null");
 			return null;
 		}

@@ -11,7 +11,7 @@ public interface UserService {
 
 	UserDto findById(Integer id);
 
-	List<UserDto> findAll();
+	List<UserDto> findAllByCompanyId(Integer id);
 
 	void delete(Integer id);
 

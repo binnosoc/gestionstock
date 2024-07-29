@@ -37,12 +37,12 @@ public interface UserApi {
     })
     UserDto findById(@PathVariable("id") Integer id);
 
-    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/allbycompany/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Lister tous les utilisateurs", description = "Cette méthode permet de lister tous les utilisateurs")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Liste des utilisateurs ou liste vide", content = @Content(mediaType = "application/json", schema = @Schema(type = "array", implementation = UserDto.class)))
     })
-    List<UserDto> findAll();
+    List<UserDto> findAllByCompanyId(@PathVariable("id") Integer id);
 
     @DeleteMapping(value = "/delete/{id}")
     @Operation(summary = "Supprimer un utilisateur", description = "Cette méthode permet de supprimer un utilisateur par ID")

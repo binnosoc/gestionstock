@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.boroousseni.gestionstock.dto.CustomerOrderLigneDto;
 import com.boroousseni.gestionstock.dto.ItemDto;
@@ -20,7 +21,7 @@ import com.boroousseni.gestionstock.repository.SupplierOrderLigneRepository;
 import com.boroousseni.gestionstock.services.ItemService;
 import com.boroousseni.gestionstock.validators.ItemValidator;
 
-import io.micrometer.common.util.StringUtils;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -69,7 +70,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public ItemDto findByCode(String itemCode) {
 		// TODO Auto-generated method stub
-		if (StringUtils.isEmpty(itemCode)) {
+		if (!StringUtils.hasLength(itemCode)) {
 			log.error("Item CODE is null");
 			return null;
 		}

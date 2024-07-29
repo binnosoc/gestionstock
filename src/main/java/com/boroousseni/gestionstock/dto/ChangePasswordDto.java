@@ -6,6 +6,7 @@ import lombok.Data;
 @Builder
 @Data
 public class ChangePasswordDto {
+	
 	  private Integer id;
 
 	  private String password;

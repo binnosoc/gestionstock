@@ -3,9 +3,11 @@ package com.boroousseni.gestionstock.validators;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.util.StringUtils;
+
 import com.boroousseni.gestionstock.dto.CategoryDto;
 
-import io.micrometer.common.util.StringUtils;
+
 
 public class CategoryValidator {
 	public static List<String> validate(CategoryDto categoryDto) {
@@ -18,11 +20,11 @@ public class CategoryValidator {
 
 			return errors;
 		}
-		if (StringUtils.isEmpty(categoryDto.getName())) {
+		if (!StringUtils.hasLength(categoryDto.getName())) {
 			errors.add("Veuillez renseigner le nom de la catégorie");
 		}
 
-		if (StringUtils.isEmpty(categoryDto.getDescription())) {
+		if (!StringUtils.hasLength(categoryDto.getDescription())) {
 			errors.add("Veuillez renseigner la description");
 		}
 

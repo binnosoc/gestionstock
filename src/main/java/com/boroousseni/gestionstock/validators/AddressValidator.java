@@ -3,9 +3,11 @@ package com.boroousseni.gestionstock.validators;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.util.StringUtils;
+
 import com.boroousseni.gestionstock.dto.AddressDto;
 
-import io.micrometer.common.util.StringUtils;
+
 
 public class AddressValidator {
 	public static List<String> validate(AddressDto addressDto) {
@@ -20,19 +22,19 @@ public class AddressValidator {
 			return errors;
 		}
 
-		if (StringUtils.isEmpty(addressDto.getAddress1())) {
+		if (!StringUtils.hasLength(addressDto.getAddress1())) {
 			errors.add("Veuillez renseigner l'adresse 1'");
 		}
-		if (StringUtils.isEmpty(addressDto.getAddress2())) {
+		if (!StringUtils.hasLength(addressDto.getAddress2())) {
 			errors.add("Veuillez renseigner l'adresse 2'");
 		}
-		if (StringUtils.isEmpty(addressDto.getCountry())) {
+		if (!StringUtils.hasLength(addressDto.getCountry())) {
 			errors.add("Veuillez renseigner le pays'");
 		}
-		if (StringUtils.isEmpty(addressDto.getTown())) {
+		if (!StringUtils.hasLength(addressDto.getTown())) {
 			errors.add("Veuillez renseigner la ville '");
 		}
-		if (StringUtils.isEmpty(addressDto.getPostalCode())) {
+		if (!StringUtils.hasLength(addressDto.getPostalCode())) {
 			errors.add("Veuillez renseigner le code postale '");
 		}
 

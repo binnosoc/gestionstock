@@ -3,9 +3,10 @@ package com.boroousseni.gestionstock.validators;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.boroousseni.gestionstock.dto.RoleDto;
+import org.springframework.util.StringUtils;
 
-import io.micrometer.common.util.StringUtils;
+import com.boroousseni.gestionstock.dto.RoleDto;
+ 
 
 public class RoleValidator {
 	public static List<String> validate(RoleDto roleDto) {
@@ -17,7 +18,7 @@ public class RoleValidator {
 			return errors;
 		}
 
-		if (StringUtils.isEmpty(roleDto.getName())) {
+		if (!StringUtils.hasLength(roleDto.getName())) {
 			errors.add("Veuillez renseigner le role'");
 		}
 

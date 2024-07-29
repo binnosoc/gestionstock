@@ -3,9 +3,11 @@ package com.boroousseni.gestionstock.validators;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.util.StringUtils;
+
 import com.boroousseni.gestionstock.dto.ItemDto;
 
-import io.micrometer.common.util.StringUtils;
+ 
 
 public class ItemValidator {
 	public static List<String> validate(ItemDto itemDto) {
@@ -21,15 +23,15 @@ public class ItemValidator {
 			return errors;
 		}
 
-		if (StringUtils.isEmpty(itemDto.getCode())) {
+		if (!StringUtils.hasLength(itemDto.getCode())) {
 			errors.add("Veuillez renseigner le code de l'article'");
 		}
 
-		if (StringUtils.isEmpty(itemDto.getName())) {
+		if (!StringUtils.hasLength(itemDto.getName())) {
 			errors.add("Veuillez renseigner la designation'");
 		}
 
-		if (StringUtils.isEmpty(itemDto.getDescription())) {
+		if (!StringUtils.hasLength(itemDto.getDescription())) {
 			errors.add("Veuillez renseigner la description'");
 		}
 

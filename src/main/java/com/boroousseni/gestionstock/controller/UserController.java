@@ -32,9 +32,9 @@ public class UserController implements UserApi {
 	}
 
 	@Override
-	public List<UserDto> findAll() {
+	public List<UserDto> findAllByCompanyId(Integer id) {
 		// TODO Auto-generated method stub
-		return userService.findAll();
+		return userService.findAllByCompanyId(id);
 	}
 
 	@Override

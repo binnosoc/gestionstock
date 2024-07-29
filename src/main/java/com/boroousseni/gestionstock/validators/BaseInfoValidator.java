@@ -3,9 +3,11 @@ package com.boroousseni.gestionstock.validators;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.util.StringUtils;
+
 import com.boroousseni.gestionstock.dto.BaseInfoDto;
 
-import io.micrometer.common.util.StringUtils;
+
 
 public class BaseInfoValidator {
 	public static List<String> validate(BaseInfoDto baseInfoDto) {
@@ -22,22 +24,22 @@ public class BaseInfoValidator {
 			return errors;
 		}
 
-		if (StringUtils.isEmpty(baseInfoDto.getName())) {
+		if (!StringUtils.hasLength(baseInfoDto.getName())) {
 			errors.add("Veuillez renseigner le nom");
 		}
 
-		if (StringUtils.isEmpty(baseInfoDto.getFirstname())) {
+		if (!StringUtils.hasLength(baseInfoDto.getFirstname())) {
 			errors.add("Veuillez renseigner le prénom");
 		}
-		if (StringUtils.isEmpty(baseInfoDto.getPhone())) {
+		if (!StringUtils.hasLength(baseInfoDto.getPhone())) {
 			errors.add("Veuillez renseigner le numéro de téléphone");
 		}
 
-		if (StringUtils.isEmpty(baseInfoDto.getEmail())) {
+		if (!StringUtils.hasLength(baseInfoDto.getEmail())) {
 			errors.add("Veuillez renseigner l'adresse email");
 		}
 
-		if (StringUtils.isEmpty(baseInfoDto.getPicture())) {
+		if (!StringUtils.hasLength(baseInfoDto.getPicture())) {
 			errors.add("Veuillez renseigner l'image");
 		}
 		errors.addAll(AddressValidator.validate(baseInfoDto.getAddress()));

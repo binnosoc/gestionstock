@@ -11,7 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class SaleServiceImpl implements SaleService {@Override
+public class SaleServiceImpl implements SaleService {
+	
+	@Override
 	public SaleDto save(SaleDto dto) {
 		// TODO Auto-generated method stub
 		return null;

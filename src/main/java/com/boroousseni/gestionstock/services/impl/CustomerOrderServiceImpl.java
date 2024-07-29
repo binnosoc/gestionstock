@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.boroousseni.gestionstock.dto.CustomerDto;
 import com.boroousseni.gestionstock.dto.CustomerOrderDto;
@@ -34,7 +35,7 @@ import com.boroousseni.gestionstock.services.StockMovementService;
 import com.boroousseni.gestionstock.validators.CustomerOrderValidator;
 import com.boroousseni.gestionstock.validators.ItemValidator;
 
-import io.micrometer.common.util.StringUtils;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -121,7 +122,7 @@ public class CustomerOrderServiceImpl implements CustomerOrderServcie {
 	public CustomerOrderDto updateOrderStatus(Integer orderID, OrderStatus orderStatus) {
 		// TODO Auto-generated method stub
 		checkOrderId(orderID);
-		if (StringUtils.isEmpty(String.valueOf(orderStatus))) {
+		if (!StringUtils.hasLength(String.valueOf(orderStatus))) {
 			log.error("L'etat de la order customer is NULL");
 			throw new InvalidOperationException("Impossible de modifier l'etat de la order avec un etat null",
 					ErrorCode.CUSTOMER_ORDER_NOT_EDITABLE);

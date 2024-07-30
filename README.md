@@ -11,7 +11,6 @@ GestionStock is a comprehensive stock management application that allows busines
 - [Usage](#usage)
 - [Security](#security)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 

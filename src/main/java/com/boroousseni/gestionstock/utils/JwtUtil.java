@@ -31,7 +31,7 @@ public class JwtUtil {
 		return extractClaim(token, Claims::getExpiration);
 	}
 
-	public String extractIdEntreprise(String token) {
+	public String extractCompanyId(String token) {
 		final Claims claims = extractAllClaims(token);
 
 		return claims.get("CompanyId", String.class);

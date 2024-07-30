@@ -16,18 +16,22 @@ import com.boroousseni.gestionstock.services.UserService;
 
 @Service
 public class ApplicationUserDetailsService implements UserDetailsService {
+	private final UserService service;
+
 	@Autowired
-	private UserService service;
+	public ApplicationUserDetailsService(UserService service) {
+		this.service = service;
+	}
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		UserDto user = service.findByEmail(email);
 
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-		
+
 		user.getRole().forEach(roleElt -> authorities.add(new SimpleGrantedAuthority(roleElt.getName())));
 
-		return (UserDetails) new ExtendedUser(user.getBaseInfo().getEmail(), user.getPassword(), user.getCompany().getId(),
-				authorities);
+		return (UserDetails) new ExtendedUser(user.getBaseInfo().getEmail(), user.getPassword(),
+				user.getCompany().getId(), authorities);
 	}
 }

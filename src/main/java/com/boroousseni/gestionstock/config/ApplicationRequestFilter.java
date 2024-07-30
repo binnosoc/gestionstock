@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,13 +23,16 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class ApplicationRequestFilter extends OncePerRequestFilter {
 	
+    @Autowired
+    @Lazy
+    private JwtUtil jwtUtil;
+    
+    @Autowired
+    @Lazy
+    private ApplicationUserDetailsService userDetailsService;
 
-  @Autowired
-  private JwtUtil jwtUtil;
 
-  @Autowired
-  private ApplicationUserDetailsService userDetailsService;
-
+   
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
       throws ServletException, IOException {
@@ -36,12 +40,12 @@ public class ApplicationRequestFilter extends OncePerRequestFilter {
     final String authHeader = request.getHeader("Authorization");
     String userEmail = null;
     String jwt = null;
-    String idEntreprise = null;
+    String companyId = null;
 
     if(authHeader != null && authHeader.startsWith("Bearer ")) {
       jwt = authHeader.substring(7);
       userEmail = jwtUtil.extractUsername(jwt);
-      idEntreprise = jwtUtil.extractIdEntreprise(jwt);
+      companyId = jwtUtil.extractCompanyId(jwt);
     }
 
     if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -56,7 +60,7 @@ public class ApplicationRequestFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
       }
     }
-    MDC.put("idEntreprise", idEntreprise);
+    MDC.put("companyId", companyId);
     chain.doFilter(request, response);
   }
 }

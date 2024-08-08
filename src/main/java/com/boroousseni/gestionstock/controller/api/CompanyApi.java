@@ -28,7 +28,7 @@ public interface CompanyApi {
 			@ApiResponse(responseCode = "400", description = "L'objet entreprise n'est pas valide") })
 	CompanyDto save(@RequestBody CompanyDto dto);
 	
-	@GetMapping(value = "/entreprises/search/{idCompany}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/companies/search/{idCompany}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Operation(summary = "Rechercher une entreprise par son ID", description = "Cette méthode permet de chercher un entreprise par son ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "L'entreprise a été trouvé dans la base de données", content = @Content(mediaType = "application/json", schema = @Schema(type = "array", implementation = CompanyDto.class))),

@@ -1,0 +1,31 @@
+services:
+  postgres:
+    container_name: postgres-sql-gsc
+    image: postgres
+    environment:
+      POSTGRES_USER: innosoc
+      POSTGRES_PASSWORD: Docker@2024d
+      PGDATA: /var/lib/postgresql/gsc/data
+      POSTGRES_DB: gestion_stock
+    volumes:
+      - postgres:/gsc/data/postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - spring-gsc-demo
+    restart: unless-stopped
+
+  mail-dev:
+    container_name: mail-dev-gsc
+    image: maildev/maildev
+    ports:
+      - "1082:1080"
+      - "1027:1025"
+
+networks:
+  spring-gsc-demo:
+    driver: bridge
+
+volumes:
+  postgres:
+    driver: local

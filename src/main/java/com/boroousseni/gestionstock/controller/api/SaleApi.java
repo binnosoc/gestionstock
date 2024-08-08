@@ -15,11 +15,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 @Tag(name = "ventes")
 @RequestMapping(APP_ROOT + "/ventes")
 public interface SaleApi {
 
+	@PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Enregistrer une vente", description = "Cette méthode permet d'enregistrer ou de modifier une vente")
     @ApiResponses(value = {

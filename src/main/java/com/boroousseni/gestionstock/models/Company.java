@@ -57,9 +57,6 @@ public class Company extends AbstractEntity {
 	private List<Category> categories;
 	
 	@OneToMany(mappedBy = "company")
-	private List<User> users;
-	
-	@OneToMany(mappedBy = "company")
 	private List<Sale> sales;
 	
 	@OneToMany(mappedBy = "company")

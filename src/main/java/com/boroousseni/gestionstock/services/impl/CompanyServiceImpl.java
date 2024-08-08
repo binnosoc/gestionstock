@@ -7,17 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.boroousseni.gestionstock.dto.CompanyDto;
-import com.boroousseni.gestionstock.dto.RoleDto;
-import com.boroousseni.gestionstock.dto.UserDto;
+
 import com.boroousseni.gestionstock.exceptions.EntityNotFoundException;
 import com.boroousseni.gestionstock.exceptions.ErrorCode;
-import com.boroousseni.gestionstock.exceptions.InvalidEntityException;
-import com.boroousseni.gestionstock.repository.CompanyRepository;
+ import com.boroousseni.gestionstock.repository.CompanyRepository;
 import com.boroousseni.gestionstock.repository.RoleRepository;
 import com.boroousseni.gestionstock.services.CompanyService;
-import com.boroousseni.gestionstock.services.UserService;
-import com.boroousseni.gestionstock.validators.CompanyValidator;
 
+  
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,21 +24,18 @@ import lombok.extern.slf4j.Slf4j;
 public class CompanyServiceImpl implements CompanyService {
 
 	private CompanyRepository companyRepository;
-	private UserService userService;
+	
 	private RoleRepository roleRepository;
 
 	@Autowired
-	public CompanyServiceImpl(CompanyRepository companyRepository, UserService userService,
+	public CompanyServiceImpl(CompanyRepository companyRepository ,
 			RoleRepository roleRepository) {
 		this.companyRepository = companyRepository;
-		this.userService = userService;
+	
 		this.roleRepository = roleRepository;
 	}
 
-	private UserDto fromCompany(CompanyDto dto) {
-//		return UserDto.builder().password(generateRandomPassword()).company(dto).build();
-		return null;
-	}
+
 
 	private String generateRandomPassword() {
 		return "som3R@nd0mP@$$word";

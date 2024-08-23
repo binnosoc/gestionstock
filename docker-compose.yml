@@ -3,8 +3,8 @@ services:
     container_name: postgres-sql-gsc
     image: postgres
     environment:
-      POSTGRES_USER: innosoc
-      POSTGRES_PASSWORD: Docker@2024d
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: pass
       PGDATA: /var/lib/postgresql/gsc/data
       POSTGRES_DB: gestion_stock
     volumes:

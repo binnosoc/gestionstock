@@ -11,8 +11,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.boroousseni.gestionstock.dto.CustomerDto;
+import com.boroousseni.gestionstock.dto.UserDto;
 import com.boroousseni.gestionstock.email.EmailService;
 import com.boroousseni.gestionstock.email.EmailTemplateName;
+import com.boroousseni.gestionstock.exceptions.EntityNotFoundException;
+import com.boroousseni.gestionstock.exceptions.ErrorCode;
 import com.boroousseni.gestionstock.models.Token;
 import com.boroousseni.gestionstock.models.User;
 import com.boroousseni.gestionstock.repository.RoleRepository;
@@ -39,6 +43,17 @@ public class AuthenticationService {
 
     @Value("${application.mailing.frontend.activation-url}")
     private String activationUrl;
+    
+    public UserDto findByEmail(String email) {
+   
+        // Recherche du client par ID
+        return userRepository.findByEmail(email)
+            .map(UserDto::fromEntity)
+            .orElseThrow(() -> new EntityNotFoundException(
+                "Aucun utilisateur avec l'email= " + email + " n'a été trouvé dans la BDD", 
+                ErrorCode.USER_NOT_FOUND
+            ));
+    }
 
     public void register(RegistrationRequest request) throws MessagingException {
         var userRole = roleRepository.findByName("USER")                

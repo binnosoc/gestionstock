@@ -28,15 +28,21 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+        
                 .cors(withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(
+                        		
+                        				"binnosoc/**",
+                        				"/binnosoc/api/auth/authenticate",
+                        				"/api/**",
+                        				"/api/auth/**",
                                         "/auth/**",                               
                                         "gestionstock/v1/**",
-                                        "/v2/api-docs",
-                                        "/v3/api-docs",
-                                        "/v3/api-docs/**",
+                                        "/v1/api-docs/**",
+                                        "/v2/api-docs/**",
+                                        "/v3/api-docs/**",                              
                                         "/swagger-resources",
                                         "/swagger-resources/**",
                                         "/configuration/ui",
@@ -52,7 +58,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-
+        
         return http.build();
     }
 }

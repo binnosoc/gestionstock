@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/gestion_stock
     username: username
-    password: pass
+    password: YourDockerPassword
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -17,7 +17,7 @@ spring:
     host: localhost
     port: 1027
     username: username
-    password: pass
+    password: YourDockerPassword
     properties:
       mail:
         smtp:

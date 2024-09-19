@@ -28,7 +28,6 @@ GestionStock is a comprehensive stock management application that allows busines
 - **Database**: MySQL (or other supported databases)
 - **Authentication**: JWT (JSON Web Token)
 - **Containerization**: Docker
-- **Cloud Deployment**: AWS
 - **API Documentation**: Springdoc OpenAPI
 
 ## Setup and Installation
